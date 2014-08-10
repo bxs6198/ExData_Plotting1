@@ -8,6 +8,9 @@
 ##  STEP 1: Set the RStudio and directory environment configuration
 ##
 
+    ## Load the 'zoo' library for date/time processing
+    library("zoo")
+
     ## Check for the './data' directory and if it doesn't exist create it as
     ## this is where the data file will be downloaded and stored.
     if (!file.exists("./data")) {dir.create("./data")}

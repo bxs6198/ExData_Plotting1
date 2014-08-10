@@ -37,8 +37,13 @@
     
 ##
 ##  STEP 2: Plot to the screen.
-##
+##    
+
     ## Generate the plot
+    plot(data$Global_active_power ~ as.POSIXct(data$DateTime),
+         type="l",
+         ylab="Global Active Power (kilowatts)",
+         xlab="")
     
 ##
 ##  STEP 3: Plot to the PNG device.
@@ -50,6 +55,10 @@
         height=480)
     
     ## Generate the plot
+    plot(data$Global_active_power ~ as.POSIXct(data$DateTime),
+         type="l",
+         ylab="Global Active Power (kilowatts)",
+         xlab="")
     
     ## Close the PNG device
     dev.off()
