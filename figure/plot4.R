@@ -38,7 +38,56 @@
 ##
 ##  STEP 2: Plot to the screen.
 ##
-    ## Generate the plot
+    
+    ## Set the multi-plot column layout
+    par(mfcol=c(2, 2))
+    
+    ## Generate 1st plot
+        plot(data$Global_active_power ~ as.POSIXct(data$DateTime),
+             type="l",
+             ylab="Global Active Power (kilowatts)",
+             xlab="")
+    
+    ## Generate 2nd plot
+        ## Generate the empty plot
+        plot(data$Sub_metering_1 ~ as.POSIXct(data$DateTime),
+             type="n",
+             ylab="Energy sub metering",
+             xlab="")
+        
+        ## Add the 'Sub_metering_1' line
+        lines(data$Sub_metering_1 ~ as.POSIXct(data$DateTime),
+              type="l",
+              col="black")
+        
+        ## Add the 'Sub_metering_2' line
+        lines(data$Sub_metering_2 ~ as.POSIXct(data$DateTime),
+              type="l",
+              col="red")
+        
+        ## Add the 'Sub_metering_3' line
+        lines(data$Sub_metering_3 ~ as.POSIXct(data$DateTime),
+              type="l",
+              col="blue")
+        
+        ## Add the legend
+        legend("topright",
+               lty=1,
+               bty="n",
+               col=c("black","red","blue"),
+               legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+    
+    ## Generate 3rd plot
+        plot(data$Voltage ~ as.POSIXct(data$DateTime),
+             type="l",
+             ylab="Voltage",
+             xlab="datetime")
+
+    ## Generate 4th plot
+        plot(data$Global_reactive_power ~ as.POSIXct(data$DateTime),
+             type="l",
+             ylab="Global_reactive_power",
+             xlab="datetime")    
     
 ##
 ##  STEP 3: Plot to the PNG device.
@@ -49,7 +98,55 @@
         width=480,
         height=480)
     
-    ## Generate the plot
+    ## Set the multi-plot column layout
+    par(mfcol=c(2, 2))
+    
+    ## Generate 1st plot
+    plot(data$Global_active_power ~ as.POSIXct(data$DateTime),
+         type="l",
+         ylab="Global Active Power (kilowatts)",
+         xlab="")
+    
+    ## Generate 2nd plot
+    ## Generate the empty plot
+    plot(data$Sub_metering_1 ~ as.POSIXct(data$DateTime),
+         type="n",
+         ylab="Energy sub metering",
+         xlab="")
+    
+    ## Add the 'Sub_metering_1' line
+    lines(data$Sub_metering_1 ~ as.POSIXct(data$DateTime),
+          type="l",
+          col="black")
+    
+    ## Add the 'Sub_metering_2' line
+    lines(data$Sub_metering_2 ~ as.POSIXct(data$DateTime),
+          type="l",
+          col="red")
+    
+    ## Add the 'Sub_metering_3' line
+    lines(data$Sub_metering_3 ~ as.POSIXct(data$DateTime),
+          type="l",
+          col="blue")
+    
+    ## Add the legend
+    legend("topright",
+           lty=1,
+           bty="n",
+           col=c("black","red","blue"),
+           legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+    
+    ## Generate 3rd plot
+    plot(data$Voltage ~ as.POSIXct(data$DateTime),
+         type="l",
+         ylab="Voltage",
+         xlab="datetime")
+    
+    ## Generate 4th plot
+    plot(data$Global_reactive_power ~ as.POSIXct(data$DateTime),
+         type="l",
+         ylab="Global_reactive_power",
+         xlab="datetime")    
     
     ## Close the PNG device
     dev.off()
